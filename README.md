@@ -1,4 +1,8 @@
 # AdaParse
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/e7e9e6c4-8d5b-4502-abae-cddcb1606f61" alt="image" width="70%">
+</div>
+
 AdaParse (**Ada**ptive Parallel **P**DF Parsing **a**nd **R**esource **S**caling **E**ngine) enable scalable high-accuracy PDF parsing. AdaParse is a data-driven strategy that assigns an appropriate parser to each document; offering high accuracy for any computaional budget.
 Moreover, it offers a workflow of various PDF parsing software that includes
 - extraction tools: [PyMuPDF](https://pymupdf.readthedocs.io/en/latest/), [pypdf](https://pypdf.readthedocs.io/en/stable/)
