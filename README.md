@@ -17,6 +17,12 @@ supercomputer at Argonne National Laboratory (ANL). Regardless, AdaParse can run
 # Installation
 The steps below enable any of the parsers.
 ```bash
+# conda env (machine-speicifc)
+module use /soft/modulefiles; module load conda/2024-04-29 # Polaris
+conda create -n adaparse python=3.12 -y
+conda activate adaparse
+
+# git repo (machine-agnostic)
 git clone git@github.com:7shoe/AdaParse.git
 cd AdaParse
 pip install --upgrade pip setuptools wheel
