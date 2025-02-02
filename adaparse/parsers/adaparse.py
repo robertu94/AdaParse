@@ -357,11 +357,15 @@ class AdaParse(BaseParser):
         with Timer('adaparse-quality-check', self.unique_id):
             document_text = [d['text'] for d in documents]
             qualities = self.classifier.predict(document_text)
+
+            # DEBUG
             # print('qualities.size() : ', qualities.size())
 
         # Log the percentage of low-quality documents
         low_quality_num = sum(q != 0 for q in qualities)
-        low_quality_percentage = (low_quality_num / len(qualities)) * 100
+        low_quality_percentage = (
+            1.0 * low_quality_num / len(qualities)
+        ) * 100.0
         print(f'Low-quality documents: {low_quality_percentage:.2f}%')
 
         # Collect the documents that passed the quality check
