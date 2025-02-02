@@ -2,7 +2,7 @@
 pdf_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/small-pdf-dataset/
 
 # The directory to place the converted pdfs in
-out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/pymupdf/
+out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/pymupdf/test7
 
 # The settings for the pdf parser
 parser_settings:

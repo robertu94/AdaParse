@@ -2,7 +2,7 @@
 pdf_dir: /lus/eagle/projects/argonne_tpc/siebenschuh/small-pdf-dataset/
 
 # The directory to place the converted pdfs in
-out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/marker/
+out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/marker/test7
 
 # The settings for the pdf parser
 parser_settings:

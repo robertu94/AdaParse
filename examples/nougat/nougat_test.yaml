@@ -2,7 +2,7 @@
 pdf_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/small-pdf-dataset/
 
 # The output directory of the workflow
-out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/nougat/
+out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/nougat/test7
 
 # The number of PDFs to parse in each parsl task
 chunk_size: 5
@@ -14,7 +14,7 @@ parser_settings:
   # Path to download the checkpoint to. if already exists, will use existing.
   checkpoint: /eagle/projects/argonne_tpc/siebenschuh/nougat-checkpoint
   # Set mmd_out to null if you don't want to write mmd files as a byproduct.
-  mmd_out: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/nougat/mmd_outs
+  mmd_out: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/nougat/mmd_outs/test7
   # If set to false, a will skip the pdfs that already have a parsed mmd file in mmd_out
   recompute: false
   # Set to true if you want to use fp32 instead of bfloat16 (false is recommended)
