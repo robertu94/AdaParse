@@ -2,7 +2,7 @@
 pdf_dir: /lus/eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/small-pdf-dataset/
 
 # The directory to place the converted pdfs in
-out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/adaparse/test77
+out_dir: /eagle/projects/argonne_tpc/siebenschuh/aurora_gpt/output/adaparse/test
 
 # AdaParse *requires* PDFs as zipped input
 iszip: true
