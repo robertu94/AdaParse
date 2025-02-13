@@ -146,7 +146,6 @@ pre-commit install
 ```
 
 ## Citation
-If you use AdaParse in your research, please cite this work.
 ```bibtex
 @inproceedings{Siebenschuh2025AdaParse,
   author    = {Carlo Siebenschuh and Kyle Hippe and Ozan Gokdemir and Alexander Brace and Arham Mushtaq Khan and Khalid Hossain and Yadu Babuji and Nicholas Chia and Venkatram Vishwanath and Arvind Ramanathan and Rick L. Stevens and Ian Foster and Robert Underwood},
