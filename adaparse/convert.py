@@ -282,6 +282,14 @@ if __name__ == '__main__':
     logger.info(f'Writing output to {pdf_output_dir}')
     logger.info(f'Processing {len(batched_files)} batches')  # type: ignore[arg-type]
 
+    # Ensure that AdaParse requires zipped PDFs
+    if config.parser_settings.name == 'adaparse' and not config.iszip:
+        raise ValueError(
+            'AdaParse requires input PDFs to be provided as ZIP files.\n'
+            'Consult https://github.com/7shoe/AdaParse?tab=readme-ov-file#data-preparation\n'
+            'Set `iszip: true` in your YAML config.'
+        )
+
     # Setup the worker function with default arguments
     if config.iszip:
         worker_fn = functools.partial(

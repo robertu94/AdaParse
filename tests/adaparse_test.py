@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import pdfwf
+import adaparse
 
 
 def test_version():
-    assert pdfwf.__version__
+    assert adaparse.__version__
