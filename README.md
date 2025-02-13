@@ -47,6 +47,14 @@ A single command triggers the embarassingly parallel PDF parsing engine:
 python -m adaparse.convert --config <your-config.yaml>
 ```
 
+### Data preparation
+PDF files (zipped or unzipped) reside in out_dir. See the configuration file below.
+AdaParse requires the PDFs to be zipped and will ignore unzipped .pdf files in that directory.
+Zipped input is optional for the other parsers. This repository provides a CLI to zip PDFs.
+```bash
+adaparse zip-pdfs --input_dir path/to/pdf_directory ---output_dir path/to/destination_directory
+```
+
 ### Configuration
 The YAML configuration file specifies all aspects of the chosen parser, virtual environment and computing platform it is run on.
 
@@ -58,8 +66,11 @@ pdf_dir: /lus/eagle/projects/argonne_tpc/siebenschuh/small-pdf-dataset
 # The directory to store the JSONLs
 out_dir: runs/output-dir
 
+# AdaParse *requires* zipped input (optional for other parsers)
+iszip: true
+
 # The number of PDFs per parsl task
-chunk_size: 5
+chunk_size: 1
 
 # Parser settings
 parser_settings:
@@ -81,10 +92,10 @@ compute_settings:
   # The HPC queue to submit to
   queue: debug
   # The amount of runtime requested for this job
-  walltime: 01:00:00
+  walltime: 00:60:00
 ```
 Example configuration files for each parser can be found in:
-- **AdaParse**: [examples/adaparse/adaparse_test.yaml](examples/adaparse/adaparse_test.yaml)
+- **AdaParse**: [examples/adaparse/adaparse_test.yaml](examples/adaparse/adaparse_optimized.yaml)
 - **Nougat**: [examples/nougat/nougat_test.yaml](examples/nougat/nougat_test.yaml)
 - **Marker**: [examples/marker/marker_test.yaml](examples/marker/marker_test.yaml)
 - **PyMuPDF**: [examples/pymupdf/pymupdf_test.yaml](examples/pymupdf/pymupdf_test.yaml)
@@ -92,13 +103,27 @@ Example configuration files for each parser can be found in:
 - **Tesseract**: [examples/tesseract/tesseract_test.yaml](examples/tesseract/tesseract_test.yaml)
 
 ### Output
-Once you've updated the YAML file and run the AdaParse command, the textual output will be written to the `out_dir`.
-The subdirectory `<out_dir>/parsed_pdfs` contains the parsed PDF output in JSON lines format. Each line of the JSONL file contains
-the `path` field with the PDF source file, the `text` field containing the parsed text, and the `metadata` field containing information on author, title. etc..
-Please note that the particular metadata stored depends on the parser used.
+Once you've updated the YAML file and run the AdaParse command, the textual output will be written to out_dir.
+The subdirectory <out_dir>/parsed_pdfs contains the parsed PDF output in JSON Lines format. Each line of the JSONL file contains
+a path field with the PDF source file, a text field containing the parsed text, and a metadata field with information such as the author and title.
+Please note that the specific metadata stored depends on the parser. Moreover, some attributes may not be provided by the PDF file, resulting in an empty string ('').
+Hence, a typical line in the JSONL file may look like this:
 ```json
-{"path": "/path/to/1.pdf", "text": "This is the text of the first PDF."}
-{"path": "/path/to/2.pdf", "text": "This is the text of the second PDF."}
+{"path": "/path/to/1.pdf",
+ "text": "Text of the 1st PDF.",
+ "metadata" : {
+    "title" : "Ising string beyond the Nambu-Goto action",
+    "authors" : "", 
+    "format" : "PDF 1.4",
+    "creationdate" : "",
+    "keywords" : "",
+    "doi" : "",
+    "first_page" : "One of the most promising approaches ...",
+    "abstract" : "A major result of ...",
+    "page_char_idx" : [0, 2961, 7407, 11735, 13927]
+ },
+"parser" : "pymupdf"
+}
 ```
 
 **Note**: If the parser fails to parse a PDF, the JSONL file will not contain
@@ -118,4 +143,16 @@ source venv/bin/activate
 pip install -U pip setuptools wheel
 pip install -e '.[dev,docs]'
 pre-commit install
+```
+
+## Citation
+If you use AdaParse in your research, please cite this work.
+```bibtex
+@inproceedings{Siebenschuh2025AdaParse,
+  author    = {Carlo Siebenschuh and Kyle Hippe and Ozan Gokdemir and Alexander Brace and Arham Mushtaq Khan and Khalid Hossain and Yadu Babuji and Nicholas Chia and Venkatram Vishwanath and Arvind Ramanathan and Rick L. Stevens and Ian Foster and Robert Underwood},
+  title     = {{AdaParse}: An Adaptive Parallel {PDF} Parsing and Resource Scaling Engine},
+  booktitle = {Proceedings of the Conference on Machine Learning and Systems (MLSys)},
+  year      = {2025},
+  note      = {Accepted for publication at MLSys 2025. Preprint not yet publicly available.}
+}
 ```
