@@ -14,6 +14,10 @@ scheduler. While AdaParse is agnostic to the specific system, instructions below
 supercomputer at Argonne National Laboratory (ANL). Regardless, AdaParse can run on any system (large or small) by adding an appropriate
 [Parsl configuration](https://parsl.readthedocs.io/en/stable/userguide/configuring.html).
 
+# News
+- AdaParse has been accepted to (MLSys 2025!)[https://mlsys.org/virtual/2025/poster/3229] 🎉
+- This work is presented a MLSys on May 13th, 2025 🥳
+
 # Installation
 The steps below enable any of the parsers.
 ```bash
