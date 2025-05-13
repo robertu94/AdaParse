@@ -147,11 +147,10 @@ pre-commit install
 
 ## Citation
 ```bibtex
-@inproceedings{Siebenschuh2025AdaParse,
+@article{Siebenschuh2025AdaParse,
   author    = {Carlo Siebenschuh and Kyle Hippe and Ozan Gokdemir and Alexander Brace and Arham Mushtaq Khan and Khalid Hossain and Yadu Babuji and Nicholas Chia and Venkatram Vishwanath and Arvind Ramanathan and Rick L. Stevens and Ian Foster and Robert Underwood},
   title     = {{AdaParse}: An Adaptive Parallel {PDF} Parsing and Resource Scaling Engine},
-  booktitle = {Proceedings of the Conference on Machine Learning and Systems (MLSys)},
-  year      = {2025},
-  note      = {Accepted for publication at MLSys 2025. Preprint not yet publicly available.}
+  journal={Proceedings of Machine Learning and Systems},
+  year      = {2025}
 }
 ```
