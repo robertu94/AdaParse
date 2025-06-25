@@ -242,6 +242,7 @@ class AuroraSettings(BaseComputeSettings):
         config = Config(
             executors=[
                 HighThroughputExecutor(
+                    label=self.label,
                     # Ensures one worker per GPU tile on each node
                     available_accelerators=tile_names,
                     max_workers_per_node=12,
@@ -272,8 +273,6 @@ class AuroraSettings(BaseComputeSettings):
                         min_blocks=0,
                         # Maximum number of concurrent PBS jobs running workflow
                         max_blocks=max_num_jobs,
-                        # Hardware threads per node
-                        cpus_per_node=self.cores_per_worker,
                     ),
                 ),
             ],
